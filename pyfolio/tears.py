@@ -545,8 +545,6 @@ def create_returns_tear_sheet(returns, positions=None,
     i += 1
     ax_rolling_sharpe = plt.subplot(gs[i, :], sharex=ax_rolling_returns)
     i += 1
-    ax_rolling_risk = plt.subplot(gs[i, :], sharex=ax_rolling_returns)
-    i += 1
     ax_drawdown = plt.subplot(gs[i, :], sharex=ax_rolling_returns)
     i += 1
     ax_underwater = plt.subplot(gs[i, :], sharex=ax_rolling_returns)
@@ -605,8 +603,6 @@ def create_returns_tear_sheet(returns, positions=None,
     plotting.plot_rolling_sharpe(
         returns, ax=ax_rolling_sharpe)
 
-    plotting.plot_rolling_fama_french(
-        returns, ax=ax_rolling_risk)
 
     # Drawdowns
     plotting.plot_drawdown_periods(
@@ -978,9 +974,14 @@ def create_interesting_times_tear_sheet(
             ax=ax, color='forestgreen', label='algo', alpha=0.7, lw=2)
         ep.cum_returns(bmark_interesting[name]).plot(
             ax=ax, color='gray', label='SPY', alpha=0.6)
-        ax.legend(['Algo',
-                   'SPY'],
-                  loc=legend_loc, frameon=True, framealpha=0.5)
+        if benchmark_rets is None:
+            ax.legend(['Algo',
+                       'SPY'],
+                      loc=legend_loc, frameon=True, framealpha=0.5)
+        else:
+             ax.legend(['Algo',
+                       'Index'],
+                      loc=legend_loc, frameon=True, framealpha=0.5)           
         ax.set_title(name)
         ax.set_ylabel('Returns')
         ax.set_xlabel('')
