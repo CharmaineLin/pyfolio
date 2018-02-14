@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #
 # Copyright 2016 Quantopian, Inc.
 #
@@ -76,3 +77,33 @@ PERIODS['Recovery'] = (pd.Timestamp('20090401'),
 
 PERIODS['New Normal'] = (pd.Timestamp('20130101'),
                          pd.Timestamp('today'))
+
+#My interesting period
+#2007年股灾
+PERIODS['2007 China Stock Market Crash'] = (pd.Timestamp('20070530'),pd.Timestamp('20070604'))
+
+#沪港通
+PERIODS['SH HK Stock Connection'] = (pd.Timestamp('20141117'),pd.Timestamp('20150309'))
+
+#2015年牛市
+PERIODS['2015 China Stock Bull Market'] = (pd.Timestamp('20150420'),pd.Timestamp('20150612'))
+
+#2015年股灾
+PERIODS['2015 China Stock Market Crash'] = (pd.Timestamp('20150612'),pd.Timestamp('20150826'))
+
+#2016年熔断
+PERIODS['2016 China Circuit Break'] = (pd.Timestamp('20151223'),pd.Timestamp('20160229'))
+
+#2016年万宝之争
+PERIODS['2016 China WanKe BaoNeng Fight'] = (pd.Timestamp('20161129'),pd.Timestamp('20170116'))
+
+#2017年次新股闪崩
+PERIODS['2017 New Stock Flash Crash'] = (pd.Timestamp('20170410'),pd.Timestamp('20170511'))
+
+#2017年A股进入MSCI 
+PERIODS['2017 China Stock Added in MSCI'] = (pd.Timestamp('20170619'),pd.Timestamp('20171122'))
+
+#Every Year
+for Year in range(2007,int(str(pd.Timestamp('Today'))[:4])):
+	Year=str(Year)
+	PERIODS[Year] = (pd.Timestamp(Year+'0101'),pd.Timestamp(Year+'1231'))
